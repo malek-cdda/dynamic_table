@@ -11,38 +11,33 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import style from "./style.module.css";
-import { handlePageChanges } from "@/hooks/table";
+import {
+  handleDeleteData,
+  handlePageChanges,
+  singleMultiToggles,
+} from "@/hooks/table";
 const Page = () => {
   const data = useSelector((state: any) => state?.data?.data);
 
   // selected data you can got here
   const [selectedRecords, setSelectedRecords] = useState<any>([]);
-
-  const singleMultiToggle = (e: any) => {
-    console.log(e);
-    let result;
-    result = [...data].map((item: any) => {
-      if (item.id === e.id) {
-        return { ...item, ...e };
-      }
-      return item;
-    });
-    store.dispatch(updateTableSlice(result));
-  };
   // toggle product state code here
   const [toggleProduct, setToggleProduct] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limits, setLimits] = useState(5);
+  const [newData, setNewData] = useState([]);
+  // every function toggle code here
+  const singleMultiToggle = (e: any) => {
+    store.dispatch(updateTableSlice(singleMultiToggles(data, e)));
+  };
   //  sorted data function code here
   const getSortingData = (dataSort: any) => {
     store.dispatch(updateTableSlice(dataSort));
   };
   // delete data function
   const handleDelete = (e: any) => {
-    const result = [...data].filter((item: any) => item.id !== e.id);
-    store.dispatch(updateTableSlice(result));
+    store.dispatch(updateTableSlice(handleDeleteData(data, e)));
   };
-  const [page, setPage] = useState(1);
-  const [limits, setLimits] = useState(5);
-  const [newData, setNewData] = useState([]);
   // for creating front end pagination and show the data
   useEffect(() => {
     let newDataArray: any = [];

@@ -39,3 +39,20 @@ export const handleAllDataSelectedRecord = (
     setToggleProduct(result);
   }
 };
+
+// single every column value toggle
+export const singleMultiToggles = (data: any, singleValue: any) => {
+  let result;
+  result = [...data].map((item: any) => {
+    if (item.id === singleValue.id) {
+      return { ...item, ...singleValue };
+    }
+    return item;
+  });
+  return result;
+};
+//  product delete function code here
+export const handleDeleteData = (data: any, id: any) => {
+  return [...data].filter((item: any) => item.id !== id.id);
+};
+// data search field here
