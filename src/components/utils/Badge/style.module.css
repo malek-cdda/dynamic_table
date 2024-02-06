@@ -1,0 +1,7 @@
+.badge {
+  color: #03cf73;
+  padding: 2px 8px;
+  background-color: #808080;
+  border-radius: 30px;
+  text-transform: capitalize;
+}
