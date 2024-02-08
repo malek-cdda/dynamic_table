@@ -3,7 +3,7 @@ import Table from "./Table";
 import SelectButton from "../utils/SelectButton/SelectButton";
 import Pagination from "../utils/Pagination/Pagination";
 
-import { handlePageChanges } from "@/hooks/table";
+import { handlePageChanges } from "@/components/TableComponent/utils/table";
 import style from "./style.module.css";
 import TableTitle from "./TableTitle";
 const TableComponent = ({

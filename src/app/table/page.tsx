@@ -15,7 +15,7 @@ import {
   handleDeleteData,
   handlePageChanges,
   singleMultiToggles,
-} from "@/hooks/table";
+} from "@/components/TableComponent/utils/table";
 const Page = () => {
   const data = useSelector((state: any) => state?.data?.data);
 

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import style from "./style.module.css";
-import { handleAllDataSelectedRecord } from "@/hooks/table";
+import { handleAllDataSelectedRecord } from "@/components/TableComponent/utils/table";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
 
