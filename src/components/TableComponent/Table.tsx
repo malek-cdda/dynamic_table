@@ -4,7 +4,6 @@ import style from "./style.module.css";
 import { handleAllDataSelectedRecord } from "@/hooks/table";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
-import TableTitle from "./TableTitle";
 
 const Table = ({
   columns,
@@ -12,10 +11,12 @@ const Table = ({
   onSelectedRecords,
   showSelectBox = true,
   headerShow = true,
-  getSortingData,
+  getSortingData = () => {},
   tableAllData,
-  paginationValue,
+  pagination,
   isPagination = true,
+  withBorder = false,
+  borderColor = "red",
 }: any) => {
   // ?! all selected table area here
   const [toggleProduct, setToggleProduct] = useState<any>([]);
@@ -24,11 +25,12 @@ const Table = ({
     handleAllDataSelectedRecord(e, toggleProduct, setToggleProduct, records);
   };
   useEffect(() => {
-    onSelectedRecords(toggleProduct);
+    onSelectedRecords && onSelectedRecords(toggleProduct);
   }, [toggleProduct, onSelectedRecords]);
   return (
-    <div className={style.table_area}>
-      <TableTitle />
+    <div
+      className={style.table_area}
+      style={{ border: withBorder && `${borderColor} .2px solid` }}>
       <div className={style.table}>
         <table id={style.customers}>
           {/* table header and body */}
@@ -54,7 +56,7 @@ const Table = ({
           />
         </table>
       </div>
-      {isPagination && paginationValue}
+      {isPagination && pagination}
     </div>
   );
 };

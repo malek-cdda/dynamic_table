@@ -8,6 +8,7 @@ const Pagination = ({
   limits,
   siblings,
   handlePageChange,
+  activeColor = "black",
 }: any) => {
   const arr = returnPagination(totalPage, page, limits, siblings);
   return (
@@ -24,6 +25,7 @@ const Pagination = ({
           <button
             key={index}
             className={item == page ? style.pages_active_btn : ""}
+            style={item == page ? { backgroundColor: activeColor } : {}}
             onClick={() => handlePageChange(item)}>
             {item}
           </button>

@@ -5,10 +5,11 @@ import Pagination from "../utils/Pagination/Pagination";
 
 import { handlePageChanges } from "@/hooks/table";
 import style from "./style.module.css";
+import TableTitle from "./TableTitle";
 const TableComponent = ({
   columns,
   data,
-  setSelectedRecords,
+  setSelectedRecords = () => {},
   getSortingData,
   isPagination,
   headerShow = true,
@@ -21,8 +22,11 @@ const TableComponent = ({
   handlePageChange,
 }: any) => {
   return (
-    <div>
+    <div style={{ background: "black", borderRadius: "8px" }}>
+      <TableTitle />
       <Table
+        withBorder
+        borderColor="white"
         columns={columns}
         records={newData}
         onSelectedRecords={setSelectedRecords}
@@ -30,7 +34,7 @@ const TableComponent = ({
         showSelectBox={showSelectBox}
         getSortingData={getSortingData}
         tableAllData={data}
-        paginationValue={
+        pagination={
           <div className={style.pagination}>
             <SelectButton handleRowShowValue={handleRowShowValue} />
             <Pagination
@@ -39,6 +43,7 @@ const TableComponent = ({
               limits={limits}
               siblings={1}
               handlePageChange={handlePageChange}
+              activeColor="blue"
             />
           </div>
         }

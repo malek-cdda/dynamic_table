@@ -206,8 +206,8 @@ const Page = () => {
       <TableComponent
         columns={columns}
         data={data}
-        setSelectedRecords={setSelectedRecords}
-        getSortingData={getSortingData}
+        // setSelectedRecords={setSelectedRecords}
+        // getSortingData={getSortingData}
         isPagination={true}
         showSelectBox={true}
         headerShow={true}
