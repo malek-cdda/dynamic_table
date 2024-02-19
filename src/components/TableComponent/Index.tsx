@@ -23,7 +23,7 @@ const TableComponent = ({
 }: any) => {
   const rowClass = (index: any, data: any) => {
     console.log(data);
-    return data?.id == 2 ? "bg-red-800" : "";
+    return data?.id == 2 ? "bg-red-800 hover:bg-green-700" : "";
   };
   return (
     <div style={{ background: "black", borderRadius: "8px" }}>

@@ -14,6 +14,7 @@ any) => {
         return (
           <tr
             key={index}
+            style={{ cursor: "pointer" }}
             className={
               typeof rowClass === "function"
                 ? rowClass(index, data)

@@ -27,7 +27,7 @@
   border-bottom: 1px solid #e4e4e4;
 }
 #customers tr:hover {
-  background-color: #585858;
+  /* background-color: #585858; */
 }
 #customers th {
   padding-top: 12px;
