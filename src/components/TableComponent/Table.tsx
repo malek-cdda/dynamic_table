@@ -14,6 +14,7 @@ const Table = ({
   getSortingData = () => {},
   tableAllData,
   pagination,
+  rowClass,
   isPagination = true,
   withBorder = false,
   borderColor = "red",
@@ -53,7 +54,24 @@ const Table = ({
             showSelectBox={
               showSelectBox ? true : headerShow ? showSelectBox : false
             }
+            rowClass={rowClass}
           />
+          <tfoot>
+            <tr>
+              <td colSpan={columns.length}>
+                <div className={style.links}>
+                  <a href="#">Prev</a>
+                  <a className={style.active} href="#">
+                    1
+                  </a>
+                  <a href="#">2</a>
+                  <a href="#">3</a>
+                  <a href="#">4</a>
+                  <a href="#">Next</a>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
       {isPagination && pagination}

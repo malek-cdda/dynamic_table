@@ -4,13 +4,21 @@ export const TableBody = ({
   toggleProduct,
   handleAllDataSelectedRecords,
   showSelectBox,
-}: any) => {
+  rowClass: rowClass = () => {},
+}: //
+any) => {
   return (
     <tbody>
       {/* table body html code */}
       {records.map((data: any, index: any) => {
         return (
-          <tr key={index}>
+          <tr
+            key={index}
+            className={
+              typeof rowClass === "function"
+                ? rowClass(index, data)
+                : (rowClass as string)
+            }>
             {showSelectBox && (
               <td>
                 <input

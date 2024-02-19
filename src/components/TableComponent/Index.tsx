@@ -11,9 +11,9 @@ const TableComponent = ({
   data,
   setSelectedRecords = () => {},
   getSortingData,
-  isPagination,
+  isPagination = false,
   headerShow = true,
-  showSelectBox = true,
+  showSelectBox = false,
   newData,
   handleRowShowValue,
   totalPage,
@@ -21,19 +21,24 @@ const TableComponent = ({
   limits,
   handlePageChange,
 }: any) => {
+  const rowClass = (index: any, data: any) => {
+    console.log(data);
+    return data?.id == 2 ? "bg-red-800" : "";
+  };
   return (
     <div style={{ background: "black", borderRadius: "8px" }}>
       <TableTitle />
       <Table
-        withBorder
+        // withBorder
         borderColor="white"
         columns={columns}
-        records={newData}
+        records={newData ? newData : data}
         onSelectedRecords={setSelectedRecords}
         headerShow={headerShow}
         showSelectBox={showSelectBox}
         getSortingData={getSortingData}
         tableAllData={data}
+        rowClass={rowClass}
         pagination={
           <div className={style.pagination}>
             <SelectButton handleRowShowValue={handleRowShowValue} />

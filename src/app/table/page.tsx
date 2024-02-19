@@ -79,8 +79,9 @@ const Page = () => {
     {
       accessor: "name",
       title: "Name",
+      style: { color: "red" },
       sortable: true, // This is the new line of code
-      render: (row: any) => <span>{row.name}</span>,
+      render: (row: any) => <div>{row.name}</div>,
     },
     {
       accessor: "inputs",
@@ -206,8 +207,8 @@ const Page = () => {
       <TableComponent
         columns={columns}
         data={data}
-        // setSelectedRecords={setSelectedRecords}
-        // getSortingData={getSortingData}
+        setSelectedRecords={setSelectedRecords}
+        getSortingData={getSortingData}
         isPagination={true}
         showSelectBox={true}
         headerShow={true}
