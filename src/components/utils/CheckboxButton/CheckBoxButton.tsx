@@ -5,7 +5,6 @@ const CheckBoxButton = ({
   records,
   toggleProduct,
 }: any) => {
-  console.log(toggleProduct, records);
   return (
     <div>
       <input

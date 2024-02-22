@@ -16,9 +16,10 @@ import {
   handlePageChanges,
   singleMultiToggles,
 } from "@/components/TableComponent/utils/table";
+import SelectButton from "@/components/utils/SelectButton/SelectButton";
+import Pagination from "@/components/utils/Pagination/Pagination";
 const Page = () => {
   const data = useSelector((state: any) => state?.data?.data);
-
   // selected data you can got here
   const [selectedRecords, setSelectedRecords] = useState<any>([]);
   // toggle product state code here
@@ -213,11 +214,22 @@ const Page = () => {
         showSelectBox={true}
         headerShow={true}
         newData={newData}
-        handleRowShowValue={handleRowShowValue}
         totalPage={totalPage}
         page={page}
         limits={limits}
-        handlePageChange={handlePageChange}
+        Pagination={
+          <div className={style.pagination}>
+            <SelectButton handleRowShowValue={handleRowShowValue} />
+            <Pagination
+              totalPage={totalPage}
+              page={page}
+              limits={limits}
+              siblings={1}
+              handlePageChange={handlePageChange}
+              activeColor="blue"
+            />
+          </div>
+        }
       />
     </div>
   );

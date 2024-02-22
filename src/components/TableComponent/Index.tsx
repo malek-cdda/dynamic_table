@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Table from "./Table";
-import SelectButton from "../utils/SelectButton/SelectButton";
-import Pagination from "../utils/Pagination/Pagination";
 
 import { handlePageChanges } from "@/components/TableComponent/utils/table";
 import style from "./style.module.css";
@@ -9,22 +7,19 @@ import TableTitle from "./TableTitle";
 const TableComponent = ({
   columns,
   data,
+
   setSelectedRecords = () => {},
   getSortingData,
   isPagination = false,
   headerShow = true,
   showSelectBox = false,
   newData,
-  handleRowShowValue,
-  totalPage,
-  page,
-  limits,
-  handlePageChange,
+  Pagination,
 }: any) => {
   const rowClass = (index: any, data: any) => {
-    console.log(data);
-    return data?.id == 2 ? "bg-red-800 hover:bg-green-700" : "";
+    return data?.id == 2 ? "bg-red-800 hover:bg-yellow-700" : "";
   };
+
   return (
     <div style={{ background: "black", borderRadius: "8px" }}>
       <TableTitle />
@@ -39,19 +34,9 @@ const TableComponent = ({
         getSortingData={getSortingData}
         tableAllData={data}
         rowClass={rowClass}
-        pagination={
-          <div className={style.pagination}>
-            <SelectButton handleRowShowValue={handleRowShowValue} />
-            <Pagination
-              totalPage={totalPage}
-              page={page}
-              limits={limits}
-              siblings={1}
-              handlePageChange={handlePageChange}
-              activeColor="blue"
-            />
-          </div>
-        }
+        striped={true}
+        hoverHighlight={true}
+        pagination={Pagination}
         isPagination={isPagination}
       />
     </div>

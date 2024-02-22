@@ -7,6 +7,7 @@ export const TableHeader = ({
   showSelectBox,
   getSortingData,
   tableAllData,
+  thColor = "#8d8d8d",
 }: any) => {
   const initialSortConfig = columns.reduce((acc: any, column: any) => {
     if (column?.sortable) {
@@ -18,7 +19,7 @@ export const TableHeader = ({
   const handleSort = (key: string) => {
     const direction = sortConfig[key].direction === "asc" ? "desc" : "asc";
     const newSortConfig = { ...sortConfig, [key]: { key, direction } };
-    console.log(key);
+
     const resultData =
       tableAllData?.length &&
       [...tableAllData]?.sort((a: any, b: any) => {
@@ -52,7 +53,10 @@ export const TableHeader = ({
     // store.dispatch(updateTableData(descendingOrder));
   };
   return (
-    <thead>
+    <thead
+      style={{
+        color: "#8d8d8d",
+      }}>
       <tr>
         {/* columns header html code  */}
         {showSelectBox && (

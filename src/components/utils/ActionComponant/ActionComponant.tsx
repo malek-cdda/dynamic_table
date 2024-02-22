@@ -3,7 +3,7 @@ import { FiEye } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import style from "./style.module.css";
 
-export const ActionComponent = ({ data, handleDelete }: any) => {
+export const ActionComponent = ({ data, handleDelete = () => {} }: any) => {
   return (
     <>
       <div className={style.actions}>
