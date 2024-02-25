@@ -6,6 +6,8 @@ import Table from "@/components/TableComponent/Table";
 import { ActionComponent } from "@/components/utils/ActionComponant/ActionComponant";
 import Image from "next/image";
 import React, { useState } from "react";
+import { CiStopwatch } from "react-icons/ci";
+import { MdOutlineWatchLater } from "react-icons/md";
 import { SlSocialFacebook } from "react-icons/sl";
 const TableCard = () => {
   const [toggle, setToggle] = useState(false);
@@ -18,7 +20,6 @@ const TableCard = () => {
     {
       accessor: "title",
       title: "Title",
-
       render: (row: any) => (
         <div className="flex items-center gap-2">
           <Image
@@ -28,9 +29,27 @@ const TableCard = () => {
             alt="person"
             style={{ width: "32px", height: "32px", borderRadius: "50%" }}
           />
-          <div>
+          <div className="flex flex-col">
             <span>Redesign Layout</span>
-            <div></div>
+            <div className="flex">
+              <span>
+                <CiStopwatch
+                  style={{
+                    fontSize: "16px",
+                  }}
+                />
+                Urgent
+              </span>
+              <span>
+                {" "}
+                <MdOutlineWatchLater
+                  style={{
+                    fontSize: "16px",
+                  }}
+                />{" "}
+                4 months (Estimated)
+              </span>
+            </div>
           </div>
         </div>
       ),
