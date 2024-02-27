@@ -4,7 +4,7 @@ import Card from "@/components/CardStyledComponents/Index";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 const Sidebar = styled.div`
   width: 300px;
@@ -86,12 +86,12 @@ const MenuIcon = styled.div`
 
 const MenuContent = styled.div`
   height: ${(props: any) =>
-    props.isOpen ? `${props.children.length * 52}px` : "0px"};
+    props.isOpen ? `${props.children.length * 45}px` : "0px"};
   overflow: hidden;
   transition: all 0.3s;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   &:after {
     content: "";
@@ -99,41 +99,39 @@ const MenuContent = styled.div`
       props.children.length === 1 ? `none` : "block"};
     position: absolute;
     left: 42px;
-    margin-top: 30px;
+    margin-top: 20px;
     border-left: 2px dotted gray;
-    height: ${(props: any) =>
-      props.isOpen ? `${props.children.length * 38}px` : "0px"};
-  }
+    background-color: red;
+    height: ${(props: any) => {
+      let len = props.children.length - 1;
+      return props.isOpen ? `${len * 44}px` : "0px";
+    }}
 `;
 const SubmenuContent = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin: 6px 0px;
+  // gap: 12px;
+  // margin: 6px 0px;
   color: white;
   padding: 10px 10px 10px 40px;
-  border: ${(props: any) => (props.isActive ? "1px solid #333333" : "")};
+  // border: ${(props: any) => (props.isActive ? "1px solid #333333" : "")};
   transition: all 0.5s;
   border-radius: 8px;
   background-color: ${(props: any) => (props.isActive ? "#1a1a1a" : "")};
-  // &:after {
-  //   content: "";
-  //   display: block;
-  //   position: absolute;
-  //   left: 42px;
-  //   border-left: 2px dotted #333333;
-  //   height: 52px;
-  //   background-color: red;
-  // }
+
+  &:hover {
+    background-color: green;
+  }
   &:before {
     content: "";
-    display: ${(props: any) => (props.isChild > 1 ? `block` : `none`)};
+    display: ${(props: any) => (props.isChild > 1 ? `block` : `block`)};
     position: absolute;
     border-radius: 50%;
-    left: 39px;
+    left: ${(props: any) => (props.isActive ? "35px" : "39px")};
     z-index: 100;
-    width: 8px;
-    height: 8px;
+    width: ${(props: any) => (props.isActive ? "15px" : "8px")};
+    height: ${(props: any) => (props.isActive ? "15px" : "8px")};
+    border: ${(props: any) => (props.isActive ? "green" : "white")} 2px solid;
     background-color: white;
   }
 `;
@@ -182,7 +180,7 @@ export default function Home() {
           submenu: [
             {
               href: "/",
-              title: "All",
+              title: "Add new",
               icon: "/assets/arrow.svg",
             },
             {
@@ -192,7 +190,7 @@ export default function Home() {
             },
             {
               href: "/home",
-              title: "Category",
+              title: "Add new",
               icon: "/assets/arrow.svg",
             },
           ],
@@ -307,6 +305,8 @@ export default function Home() {
       ],
     },
   };
+  const ref = useRef(null);
+
   const pathname: any = usePathname();
   let isOpen: any;
   return (
@@ -351,6 +351,7 @@ export default function Home() {
                     openSubmenu?.submenu?.map(
                       (submenu: any, submenuIndex: any) => (
                         <SubmenuContent
+                          ref={ref}
                           isChild={openSubmenu?.submenu?.length}
                           key={submenuIndex}
                           href={submenu?.href}
@@ -358,7 +359,10 @@ export default function Home() {
                           {/* {pathname === submenu?.href && (
                             <MenuActiveIcon> </MenuActiveIcon>
                           )} */}
-                          <SubmenuContentText>
+                          <SubmenuContentText
+                            isActive={
+                              pathname === submenu?.href ? true : false
+                            }>
                             {submenu?.title}{" "}
                           </SubmenuContentText>
                         </SubmenuContent>
