@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./style.module.css";
-const ProgressBar = ({ row, progressHeight = "8px" }: any) => {
+const ProgressBar = ({ progress, progressHeight = "8px" }: any) => {
   let progressColor;
-
-  if (row?.progress <= 30) {
+  console.log(progress, "progress");
+  if (progress <= 30) {
     progressColor = "red";
-  } else if (row?.progress > 30 && row?.progress <= 60) {
+  } else if (progress > 30 && progress <= 60) {
     progressColor = "#ff9800";
   } else {
     progressColor = "#079455";
@@ -15,14 +15,14 @@ const ProgressBar = ({ row, progressHeight = "8px" }: any) => {
       <div className={style.progress_bar}>
         <div
           style={{
-            width: `${row?.progress}%`,
+            width: `${progress}%`,
             backgroundColor: progressColor,
             height: progressHeight,
             borderRadius: "16px",
             transition: "width 0.5s",
           }}></div>
       </div>
-      <span>{row?.progress}%</span>
+      <span>{progress}%</span>
     </div>
   );
 };

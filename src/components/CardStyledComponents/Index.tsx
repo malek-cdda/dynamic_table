@@ -11,8 +11,10 @@ import {
   CardPosition,
 } from "./Card-Styled";
 import Image from "next/image";
+import styled from "styled-components";
+import CardButton from "../Card/CardButton";
 
-const Index = () => {
+const CardStyled = () => {
   return (
     <Card>
       <CardHeaderWrapper>
@@ -27,10 +29,14 @@ const Index = () => {
           <div>
             <CardHeaderTitle> Redesign Layout</CardHeaderTitle>
             <CardHeaderSubtitle>
-              <CardPosition>Netflix</CardPosition>
+              <CardPosition>
+                <span className="position_1">Netflix</span>
+                <span className="position_2"> </span>
+              </CardPosition>
               <CardCounting>
                 {/* <image src="/assets/stopwatch.svg" alt="stopwatch" /> */}
-                Urgent
+                <span className="counting_1"> Urgent</span>
+                <span className="counting_2"> </span>
               </CardCounting>
               <CardFollowing>
                 <Image
@@ -49,4 +55,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default CardStyled;

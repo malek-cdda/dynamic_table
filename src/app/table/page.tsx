@@ -206,8 +206,8 @@ const Page = () => {
         </div>
       </div>
       <TableComponent
-        columns={columns}
-        data={data}
+        // columns={columns}
+        // data={data}
         setSelectedRecords={setSelectedRecords}
         getSortingData={getSortingData}
         isPagination={true}

@@ -46,18 +46,40 @@
 
 .card_position {
   padding-right: 12px;
-  border-right: 1px solid #808080;
+  /* border-right: 1px solid #808080; */
   color: #808080;
   line-height: 18px;
+
+  display: flex;
+  justify-content: space-around;
+  position: relative;
 }
+.card_position :last-child {
+  width: 1px;
+  height: 70%;
+  background-color: #808080;
+  position: absolute;
+  top: 20%;
+  right: 0px;
+}
+
 .card_counting {
   padding: 0px 12px;
-  border-right: 1px solid #808080;
   display: flex;
   align-items: center;
   color: #808080;
   gap: 4px;
   line-height: 18px;
+  display: flex;
+  position: relative;
+}
+.card_counting :last-child {
+  width: 1px;
+  height: 70%;
+  background-color: #808080;
+  position: absolute;
+  top: 20%;
+  right: 0px;
 }
 .card_following {
   padding-left: 12px;
@@ -73,6 +95,8 @@
   grid-template-columns: 1fr 1fr;
   place-items: center;
   gap: 12px;
+  padding: 12px;
+  /* background-color: yellow; */
 }
 /* .card_body_area div {
   padding: 12px 0px;
@@ -232,13 +256,14 @@
   display: flex;
   justify-content: center;
 }
+/*  */
 .action_btn_2 img {
   height: 16px;
   width: 16px;
 }
 .action_variant_2_area {
   width: 130px;
-  height: 98px;
+  height: auto;
   position: absolute;
   right: 35px;
   top: -16px;
@@ -251,7 +276,7 @@
 .action_variant_2_area::before {
   content: "";
   position: absolute;
-  top: 20%;
+  top: 16%;
   right: -20px;
   width: 0;
   height: 0;

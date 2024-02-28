@@ -1,27 +1,132 @@
 "use client";
 import Card from "@/components/Card/Card";
 import AvatarGroup from "@/components/Card/CardAvatarGroup";
+import CardButton from "@/components/Card/CardButton";
 import ProgressBar from "@/components/Card/ProgressBar";
 import Table from "@/components/TableComponent/Table";
+import GridTable from "@/components/TableGrid/GridTable";
 import { ActionComponent } from "@/components/utils/ActionComponant/ActionComponant";
 import Image from "next/image";
 import React, { useState } from "react";
 import { CiStopwatch } from "react-icons/ci";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { SlSocialFacebook } from "react-icons/sl";
+import { CiGrid41 } from "react-icons/ci";
+import { FaTableList } from "react-icons/fa6";
 const TableCard = () => {
-  const [toggle, setToggle] = useState(false);
-
-  const columns = [
+  const [isGrid, setIsGrid] = useState(false);
+  const data: any = [
     {
-      accessor: "id",
-      // title: "ID",
+      colums: "Redesign Layout",
+      img: "/assets/Logo.svg",
+      subtitle: ["Netflix", "Urgent", "4 months (Estimated)"],
+      timeline: "20 Feb 24 - 20 Jun 24",
+      projectteams: [
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+      ],
+      projecttypes: "UI/UX Design",
+      progress: 50,
+      actions: "2",
     },
     {
-      accessor: "title",
-      title: "Title",
-      render: (row: any) => (
-        <div className="flex items-center gap-2">
+      colums: "Redesign Layout",
+      img: "/assets/Logo.svg",
+      subtitle: ["Netflix", "Urgent", "4 months (Estimated)"],
+      timeline: "20 Feb 24 - 20 Jun 24",
+      projectteams: [
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+      ],
+      projecttypes: "UI/UX Design",
+      progress: 50,
+      actions: "2",
+    },
+    {
+      colums: "Redesign Layout",
+      img: "/assets/Logo.svg",
+      subtitle: ["Netflix", "Urgent", "4 months (Estimated)"],
+      timeline: "30 May 24 - 20 Jun 24",
+      projectteams: [
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+        "/assets/person.jpg",
+      ],
+      projecttypes: "UI/UX Design",
+      progress: 50,
+      actions: "1",
+    },
+  ];
+
+  const dataAccessor = {
+    card: {
+      title: "colums",
+      img: "img",
+      subtitle: "subtitle",
+      timeline: "timeline",
+      projectteams: "projectteams",
+      projecttypes: "projecttypes",
+      progress: "progress",
+      // actions: (data: any) => (
+      //   <>
+      //     <CardButton
+      //       text="Edit"
+      //       btnBgColor="#333333"
+      //       btnColor="#999999"
+      //       btnWidth="100%"
+      //       btnPadding="6px"
+      //       iconHeight="16px"
+      //       iconWidth="16px"
+      //       showIcon={true}
+      //       icon="/assets/eye.svg"
+      //       iconSite="right"
+      //       position="left"
+      //       onClick={() => console.log("edit")}
+      //     />
+      //     <CardButton
+      //       text="Delete"
+      //       btnBgColor="#333333"
+      //       btnColor="#999999"
+      //       btnWidth="100%"
+      //       btnPadding="6px"
+      //       iconHeight="16px"
+      //       iconWidth="16px"
+      //       showIcon={true}
+      //       icon="/assets/eye.svg"
+      //       iconSite="right"
+      //       position="left"
+      //       onClick={() => console.log("delete")}
+      //     />
+      //     <CardButton
+      //       text="Update"
+      //       btnBgColor="#333333"
+      //       btnColor="#999999"
+      //       btnWidth="100%"
+      //       btnPadding="6px"
+      //       iconHeight="16px"
+      //       iconWidth="16px"
+      //       showIcon={true}
+      //       icon="/assets/eye.svg"
+      //       iconSite="right"
+      //       position="left"
+      //     />
+      //   </>
+      // ),
+    },
+    table: [
+      {
+        accessor: "id",
+        title: "ID",
+      },
+      {
+        accessor: "title",
+        title: "Title",
+        render: (row) => (
           <Image
             width={1000}
             height={1000}
@@ -29,136 +134,51 @@ const TableCard = () => {
             alt="person"
             style={{ width: "32px", height: "32px", borderRadius: "50%" }}
           />
-          <div className="flex flex-col">
-            <span>Redesign Layout</span>
-            <div className="flex">
-              <span>
-                <CiStopwatch
-                  style={{
-                    fontSize: "16px",
-                  }}
-                />
-                Urgent
-              </span>
-              <span>
-                {" "}
-                <MdOutlineWatchLater
-                  style={{
-                    fontSize: "16px",
-                  }}
-                />{" "}
-                4 months (Estimated)
-              </span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      accessor: "timeline",
-      title: "Timeline",
-    },
-    {
-      accessor: "projectteamsw",
-      title: "Project Teams",
-      render: (data: any) => {
-        return <AvatarGroup data={data?.projectteams} />;
+        ),
       },
-    },
-    {
-      accessor: "projecttypes",
-      title: "Project Type",
-    },
-    {
-      accessor: "progress",
-      title: "Progress",
-      render: (row: any) => <ProgressBar row={row} />,
-    },
-    {
-      accessor: "actions",
-      title: "Actions",
-      // action component field for the table
-      render: (row: any) => <ActionComponent data={row} />,
-    },
-  ];
-  const data: any = [
-    {
-      colums: "Redesign Layout",
-      img: "/assets/Logo.svg",
-      subtitl: ["Netflix", "Urgent", "4 months (Estimated)"],
-      timeline: "20 Feb 24 - 20 Jun 24",
-      projectteams: [
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-      ],
-      projecttypes: "UI/UX Design",
-      progress: 50,
-      actions: "2",
-    },
-    {
-      colums: "Redesign Layout",
-      img: "/assets/Logo.svg",
-      subtitl: ["Netflix", "Urgent", "4 months (Estimated)"],
-      timeline: "20 Feb 24 - 20 Jun 24",
-      projectteams: [
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-      ],
-      projecttypes: "UI/UX Design",
-      progress: 50,
-      actions: "2",
-    },
-    {
-      colums: "Redesign Layout",
-      img: "/assets/Logo.svg",
-      subtitl: ["Netflix", "Urgent", "4 months (Estimated)"],
-      timeline: "20 Feb 24 - 20 Jun 24",
-      projectteams: [
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-        "/assets/person.jpg",
-      ],
-      projecttypes: "UI/UX Design",
-      progress: 50,
-      actions: "2",
-    },
-  ];
+      {
+        accessor: "timeline",
+        title: "Timeline",
+      },
+      {
+        accessor: "projectteamsw",
+        title: "Project Teams",
+      },
+      {
+        accessor: "projecttypes",
+        title: "Project Type",
+      },
+      {
+        accessor: "progress",
+        title: "Progress",
+      },
+      {
+        accessor: "actions",
+        title: "Actions",
+      },
+    ],
+  };
   return (
     <div>
       <div className="flex justify-end gap-5">
         <button
           className="bg-blue-800 px-5 py-2 rounded-md"
-          onClick={() => setToggle(true)}>
-          Card
+          onClick={() => setIsGrid(true)}>
+          <CiGrid41 />
         </button>
         <button
           className="bg-blue-800 px-5 py-2 rounded-md"
-          onClick={() => setToggle(false)}>
-          Table
+          onClick={() => setIsGrid(false)}>
+          <FaTableList />
         </button>
       </div>
-      <>
-        {toggle && (
-          <div className="container mx-auto grid lg:grid-cols-3 gap-4 md:grid-cols-2  grid-cols-1">
-            {data.map((project: any, index: any) => {
-              return <Card key={index} project={project} />;
-            })}
-          </div>
-        )}
-        {!toggle && (
-          <Table
-            columns={columns}
-            records={data}
-            showSelectBox
-            tableBgColor="black"
-          />
-        )}
-      </>
+
+      <GridTable
+        data={data}
+        dataAccessor={dataAccessor}
+        isGrid={isGrid}
+        actionButtonPosition="top"
+      />
     </div>
   );
 };

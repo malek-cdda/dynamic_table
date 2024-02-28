@@ -4,45 +4,74 @@ import { CiStopwatch } from "react-icons/ci";
 import { MdOutlineWatchLater } from "react-icons/md";
 import Image from "next/image";
 import styled from "styled-components";
-// .card_header_title {
-//   font-size: 16px;
-//   font-weight: 600;
-//   color: white;
-// }
 
-const CardHeader = () => {
+const CardHeader = ({ project, cardObject }: any) => {
+  console.log(
+    project?.colums,
+    "project",
+    cardObject,
+    "cardObject",
+    project[cardObject],
+    "project[cardObject?.title]"
+  );
   return (
     <div className={style.card_header}>
-      <div className={style.card_avatar_area}>
-        <Image
-          src="/assets/Logo.svg"
-          width={1000}
-          height={1000}
-          alt="loading"
-          className={style.card_avatar_image}
-        />
-      </div>
+      {project[cardObject?.img] && (
+        <div className={style.card_avatar_area}>
+          <Image
+            src={project[cardObject?.img]}
+            width={1000}
+            height={1000}
+            alt="loading"
+            className={style.card_avatar_image}
+          />
+        </div>
+      )}
+
       <div>
-        <span className={style.card_header_title}>Redesign Layout</span>
+        <span className={style.card_header_title}>
+          {project[cardObject?.title]}
+        </span>
         <div className={style.card_header_subtitle}>
-          <span className={style.card_position}>Netflix</span>
-          <span className={style.card_counting}>
-            <CiStopwatch
-              style={{
-                fontSize: "16px",
-              }}
-            />
-            Urgent
-          </span>
-          <span className={style.card_following}>
-            {" "}
-            <MdOutlineWatchLater
-              style={{
-                fontSize: "16px",
-              }}
-            />{" "}
-            4 months (Estimated)
-          </span>
+          {project[cardObject?.subtitle]?.length && (
+            <span className={style.card_position}>
+              <span>
+                {project[cardObject?.subtitle]?.length
+                  ? project[cardObject?.subtitle][0]
+                  : ""}
+              </span>
+              <span> </span>
+            </span>
+          )}
+          {project[cardObject?.subtitle]?.length && (
+            <span className={style.card_counting}>
+              <CiStopwatch
+                style={{
+                  fontSize: "16px",
+                }}
+              />
+              <span>
+                {" "}
+                {project[cardObject?.subtitle]?.length
+                  ? project[cardObject?.subtitle][1]
+                  : ""}
+              </span>
+              <span></span>
+            </span>
+          )}
+          {project[cardObject?.subtitle]?.length && (
+            <span className={style.card_following}>
+              {" "}
+              <MdOutlineWatchLater
+                style={{
+                  fontSize: "16px",
+                }}
+              />{" "}
+              {project[cardObject?.subtitle]?.length
+                ? project[cardObject?.subtitle][2]
+                : ""}
+            </span>
+          )}
         </div>
       </div>
     </div>

@@ -169,6 +169,12 @@ export default function Home() {
           href: "/home",
           submenu: [],
         },
+        {
+          title: "Floating",
+          icon: "/assets/home.svg",
+          href: "/floating",
+          submenu: [],
+        },
       ],
     },
     essential: {

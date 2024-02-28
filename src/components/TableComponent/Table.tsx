@@ -4,6 +4,13 @@ import style from "./style.module.css";
 import { handleAllDataSelectedRecord } from "@/components/TableComponent/utils/table";
 import { TableBody } from "./TableBody";
 import { TableHeader } from "./TableHeader";
+import {
+  TableDataLast,
+  TableDataNone,
+  TableHeaderNone,
+  TableHeaderFirst,
+  TableHeaderLast,
+} from "../StyleComponentTable/StyleComponent";
 
 const Table = ({
   columns = [],
@@ -47,7 +54,7 @@ const Table = ({
               id={style.customers}
               style={{
                 background: tableBgColor,
-                color: "white",
+                color: "black",
               }}>
               {/* table header and body */}
               {headerShow && columns?.length > 0 && (
@@ -73,7 +80,7 @@ const Table = ({
                 rowClass={rowClass}
                 striped={striped}
                 hoverHighlight={hoverHighlight}
-                tbColor="white"
+                tbColor="black"
               />
               {/* 
           <tfoot className="w-full">
@@ -88,15 +95,13 @@ const Table = ({
           {isPagination && pagination && pagination}
         </div>
       ) : (
-        <div className={style.no_data_found}>
-          <div className={style.no_data_header}>
-            <span>Column-1</span>
-            <span>Column-2</span>
-          </div>
-          <div>
-            <span>No Data Found</span>
-          </div>
-        </div>
+        <TableDataNone>
+          <TableHeaderNone>
+            <TableHeaderFirst>Column-1</TableHeaderFirst>
+            <TableHeaderLast>Column-2</TableHeaderLast>
+          </TableHeaderNone>
+          <TableDataLast>No Data Found</TableDataLast>
+        </TableDataNone>
       )}
     </>
   );

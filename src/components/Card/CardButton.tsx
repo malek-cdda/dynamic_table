@@ -17,7 +17,7 @@ type cardButtonProps = {
 };
 const CardButton = ({
   text = "Submit",
-  btnBgColor = "black",
+  btnBgColor = "",
   btnColor = "#999999",
   btnWidth = "100%",
   btnPadding = "10px",
@@ -27,10 +27,12 @@ const CardButton = ({
   icon = "",
   iconSite = "left",
   position = "center",
+  onClick = () => {},
 }: cardButtonProps) => {
   return (
     <button
-      className={style.card_button_area}
+      // className={style.card_button_area}
+      onClick={onClick}
       style={{
         backgroundColor: btnBgColor,
         color: btnColor,

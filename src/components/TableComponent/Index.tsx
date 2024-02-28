@@ -21,7 +21,7 @@ const TableComponent = ({
   };
 
   return (
-    <div style={{ background: "black", borderRadius: "8px" }}>
+    <div style={{ background: "black", borderRadius: "8px", color: "white" }}>
       <TableTitle />
       <Table
         // withBorder

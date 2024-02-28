@@ -37,7 +37,6 @@ export const CardLeftArea = styled.div`
     height: 100%;
   }
 `;
-
 export const CardHeaderTitle = styled.span`
   font-size: 16px;
   font-weight: 600;
@@ -53,20 +52,41 @@ export const CardHeaderSubtitle = styled.div`
     text-overflow: ellipsis;
   }
 `;
-export const CardPosition = styled.span`
+export const CardPosition = styled.div`
   padding-right: 12px;
-  border-right: 1px solid #808080;
   color: #808080;
   line-height: 18px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  .position_2 {
+    position: absolute;
+    width: 1px;
+    height: 70%;
+
+    background-color: #808080;
+    top: 20%;
+    right: 0px;
+  }
 `;
 export const CardCounting = styled.span`
   padding: 0px 12px;
-  border-right: 1px solid #808080;
   display: flex;
   align-items: center;
   color: #808080;
   gap: 4px;
   line-height: 18px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  .counting_2 {
+    position: absolute;
+    width: 1px;
+    height: 70%;
+    background-color: #808080;
+    top: 20%;
+    right: 0px;
+  }
 `;
 export const CardFollowing = styled.span`
   padding-left: 12px;
@@ -80,3 +100,4 @@ export const CardFollowing = styled.span`
     height: 18px;
   }
 `;
+// card body style area
