@@ -101,3 +101,20 @@ export const CardFollowing = styled.span`
   }
 `;
 // card body style area
+
+export const CardBodyArea = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  gap: 12px;
+  padding: 12px;
+`;
+
+export const CardTimeLine = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #4f4f4f;
+  background-color: red;
+`;

@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Card,
+  CardBodyArea,
   CardCounting,
   CardFollowing,
   CardHeader,
@@ -9,6 +10,7 @@ import {
   CardHeaderWrapper,
   CardLeftArea,
   CardPosition,
+  CardTimeLine,
 } from "./Card-Styled";
 import Image from "next/image";
 import styled from "styled-components";
@@ -17,6 +19,7 @@ import CardButton from "../Card/CardButton";
 const CardStyled = () => {
   return (
     <Card>
+      {/*   card header are  */}
       <CardHeaderWrapper>
         <CardHeader>
           <CardLeftArea>
@@ -51,6 +54,10 @@ const CardStyled = () => {
           </div>
         </CardHeader>
       </CardHeaderWrapper>
+      {/*   card body area  */}
+      <CardBodyArea>
+        <CardTimeLine>sd</CardTimeLine>
+      </CardBodyArea>
     </Card>
   );
 };
