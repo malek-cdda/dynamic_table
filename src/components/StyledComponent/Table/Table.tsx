@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   TableDataLast,
   TableDataNone,
@@ -14,8 +14,13 @@ import {
   TableBody,
   TableCheckbox,
 } from "./StyleComponent";
+import Pagination from "../components/Pagination/Pagination";
 
 const TableComponent = ({ columns = [], records = [] }) => {
+  const [page, setPage] = useState<number | string>(1);
+  const handlePageChange = (page: number | string) => {
+    setPage(page);
+  };
   return (
     <>
       {records?.length && columns?.length > 0 ? (
@@ -64,6 +69,13 @@ const TableComponent = ({ columns = [], records = [] }) => {
           <TableDataLast>No Data Found</TableDataLast>
         </TableDataNone>
       )}
+      {/* <Pagination
+        totalPage={10}
+        page={page}
+        limits={2}
+        siblings={2}
+        handlePageChange={handlePageChange}
+      /> */}
     </>
   );
 };

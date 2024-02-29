@@ -101,20 +101,33 @@ export const CardFollowing = styled.span`
   }
 `;
 // card body style area
-
 export const CardBodyArea = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   place-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 16px;
 `;
-
 export const CardTimeLine = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid #4f4f4f;
-  background-color: red;
+  padding: 0px 0px;
+`;
+export const CardBodyTitle = styled.p`
+  color: #808080;
+`;
+export const CardTimeLineText = styled.span`
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+`;
+// divider card body code
+export const CardBodyDivider = styled.div`
+  position: absolute;
+  height: 1px;
+  width: calc(100% - 40px);
+  background-color: #808080;
+  margin: 40px;
 `;

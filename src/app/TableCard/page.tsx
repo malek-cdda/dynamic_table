@@ -126,7 +126,7 @@ const TableCard = () => {
       {
         accessor: "title",
         title: "Title",
-        render: (row) => (
+        render: (row: any) => (
           <Image
             width={1000}
             height={1000}
