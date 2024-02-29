@@ -7,6 +7,8 @@ const GridTable = ({
   dataAccessor,
   isGrid = false,
   actionButtonPosition,
+  handleShowActionBtn,
+  showActionBtn,
 }: any) => {
   let cardObject: any;
   let columns = dataAccessor;
@@ -33,6 +35,8 @@ const GridTable = ({
                 project={project}
                 cardObject={cardObject}
                 actionButtonPosition={actionButtonPosition}
+                handleShowActionBtn={handleShowActionBtn}
+                showActionBtn={showActionBtn}
               />
             );
           })}

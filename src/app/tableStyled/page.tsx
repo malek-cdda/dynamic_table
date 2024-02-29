@@ -1,5 +1,6 @@
 "use client";
 
+import CardButton from "@/components/Card/CardButton";
 import CardComponent from "@/components/StyledComponent/Card/Card";
 import GridTable from "@/components/StyledComponent/GridTable/GridTable";
 import TableComponent from "@/components/StyledComponent/Table/Table";
@@ -13,6 +14,7 @@ const Home = () => {
 
   const data: any = [
     {
+      id: 1,
       colums: "Redesign Layout",
       img: "/assets/Logo.svg",
       subtitle: ["Netflix", "Urgent", "4 months (Estimated)"],
@@ -29,10 +31,11 @@ const Home = () => {
         "/assets/person.jpg",
       ],
       projecttypes: "UI/UX Design",
-      progress: 80,
+      // progress: 80,
       actions: "2",
     },
     {
+      id: 2,
       colums: "Admin Layout",
       img: "/assets/Logo.svg",
       subtitle: ["Netflix", "Urgent", "4 months (Estimated)"],
@@ -47,6 +50,7 @@ const Home = () => {
       actions: "2",
     },
     {
+      id: 3,
       colums: "User Layout",
       img: "/assets/Logo.svg",
       subtitle: ["Netflix", "Urgent", "4 months (Estimated)"],
@@ -67,51 +71,51 @@ const Home = () => {
       projectteams: "projectteams",
       projecttypes: "projecttypes",
       progress: "progress",
-      // actions: (data: any) => (
-      //   <>
-      //     <CardButton
-      //       text="Edit"
-      //       btnBgColor="#333333"
-      //       btnColor="#999999"
-      //       btnWidth="100%"
-      //       btnPadding="6px"
-      //       iconHeight="16px"
-      //       iconWidth="16px"
-      //       showIcon={true}
-      //       icon="/assets/eye.svg"
-      //       iconSite="right"
-      //       position="left"
-      //       onClick={() => console.log("edit")}
-      //     />
-      //     <CardButton
-      //       text="Delete"
-      //       btnBgColor="#333333"
-      //       btnColor="#999999"
-      //       btnWidth="100%"
-      //       btnPadding="6px"
-      //       iconHeight="16px"
-      //       iconWidth="16px"
-      //       showIcon={true}
-      //       icon="/assets/eye.svg"
-      //       iconSite="right"
-      //       position="left"
-      //       onClick={() => console.log("delete")}
-      //     />
-      //     <CardButton
-      //       text="Update"
-      //       btnBgColor="#333333"
-      //       btnColor="#999999"
-      //       btnWidth="100%"
-      //       btnPadding="6px"
-      //       iconHeight="16px"
-      //       iconWidth="16px"
-      //       showIcon={true}
-      //       icon="/assets/eye.svg"
-      //       iconSite="right"
-      //       position="left"
-      //     />
-      //   </>
-      // ),
+      actions: (data: any) => (
+        <>
+          <CardButton
+            text="Edit"
+            btnBgColor="#333333"
+            btnColor="#999999"
+            btnWidth="100%"
+            btnPadding="6px"
+            iconHeight="16px"
+            iconWidth="16px"
+            showIcon={true}
+            icon="/assets/eye.svg"
+            iconSite="right"
+            position="left"
+            onClick={() => console.log("edit")}
+          />
+          <CardButton
+            text="Delete"
+            btnBgColor="#333333"
+            btnColor="#999999"
+            btnWidth="100%"
+            btnPadding="6px"
+            iconHeight="16px"
+            iconWidth="16px"
+            showIcon={true}
+            icon="/assets/eye.svg"
+            iconSite="right"
+            position="left"
+            onClick={() => console.log("delete")}
+          />
+          <CardButton
+            text="Update"
+            btnBgColor="#333333"
+            btnColor="#999999"
+            btnWidth="100%"
+            btnPadding="6px"
+            iconHeight="16px"
+            iconWidth="16px"
+            showIcon={true}
+            icon="/assets/eye.svg"
+            iconSite="right"
+            position="left"
+          />
+        </>
+      ),
     },
     table: [
       {
@@ -153,6 +157,14 @@ const Home = () => {
       },
     ],
   };
+  const [showActionBtn, setShowActionBtn] = useState<any>(null);
+  const handleShowActionBtn = (id: any) => {
+    if (showActionBtn === id) {
+      setShowActionBtn(null);
+    } else {
+      setShowActionBtn(id);
+    }
+  };
   return (
     <>
       {/* <div className="grid grid-cols-3 gap-10">
@@ -180,6 +192,8 @@ const Home = () => {
         dataAccessor={dataAccessor}
         isGrid={isGrid}
         actionButtonPosition="top"
+        handleShowActionBtn={handleShowActionBtn}
+        showActionBtn={showActionBtn}
       />
     </>
   );

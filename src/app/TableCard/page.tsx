@@ -158,6 +158,14 @@ const TableCard = () => {
       },
     ],
   };
+  const [showActionBtn, setShowActionBtn] = useState<any>(null);
+  const handleShowActionBtn = (id: any) => {
+    if (showActionBtn === id) {
+      setShowActionBtn(null);
+    } else {
+      setShowActionBtn(id);
+    }
+  };
   return (
     <div>
       <div className="flex justify-end gap-5">
@@ -178,6 +186,8 @@ const TableCard = () => {
         dataAccessor={dataAccessor}
         isGrid={isGrid}
         actionButtonPosition="top"
+        handleShowActionBtn={handleShowActionBtn}
+        showActionBtn={showActionBtn}
       />
     </div>
   );

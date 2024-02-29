@@ -14,8 +14,9 @@ const Card = ({
   project = {},
   actionButtonPosition = "bottom",
   cardObject = {},
+  showActionBtn,
+  handleShowActionBtn,
 }: any) => {
-  const [showActionBtn, setShowActionBtn] = React.useState(false);
   return (
     <div className={style.card_area}>
       {/* header area of the card component */}
