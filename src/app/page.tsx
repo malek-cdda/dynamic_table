@@ -1,6 +1,5 @@
 "use client";
 
-import Card from "@/components/CardStyledComponents/Index";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,7 +34,7 @@ const MenuHeaderText = styled.h3`
 
   margin-bottom: 12px;
 `;
-const MenuItems = styled.div`
+const MenuItems = styled.div<any>`
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -43,14 +42,14 @@ const MenuItems = styled.div`
   border-radius: 8px;
   cursor: pointer;
   color: white;
-  background: ${(props: any) => (props.isOpen ? " #1a1a1a" : "")};
+  background: ${(props: any) => (props.$isOpen ? " #1a1a1a" : "")};
   transition: all 0.5s;
   &:hover {
     background-color: #1a1a1a;
     // background-color: red;
   }
 `;
-const MenuLink = styled(Link)`
+const MenuLink = styled(Link)<any>`
   display: flex;
   justify-content: space-between;
   padding: 12px;
@@ -84,9 +83,9 @@ const MenuIcon = styled.div`
   }
 `;
 
-const MenuContent = styled.div`
+const MenuContent = styled.div<any>`
   height: ${(props: any) =>
-    props.isOpen ? `${props.children.length * 45}px` : "0px"};
+    props.$isOpen ? `${props.children.length * 45}px` : "0px"};
   overflow: hidden;
   transition: all 0.3s;
   display: flex;
@@ -107,17 +106,17 @@ const MenuContent = styled.div`
       return props.isOpen ? `${len * 44}px` : "0px";
     }}
 `;
-const SubmenuContent = styled(Link)`
+const SubmenuContent = styled(Link)<any>`
   display: flex;
   align-items: center;
   // gap: 12px;
   // margin: 6px 0px;
   color: white;
   padding: 10px 10px 10px 40px;
-  // border: ${(props: any) => (props.isActive ? "1px solid #333333" : "")};
+  // border: ${(props: any) => (props.$isActive ? "1px solid #333333" : "")};
   transition: all 0.5s;
   border-radius: 8px;
-  background-color: ${(props: any) => (props.isActive ? "#1a1a1a" : "")};
+  background-color: ${(props: any) => (props.$isActive ? "#1a1a1a" : "")};
 
   &:hover {
     background-color: green;
@@ -135,7 +134,7 @@ const SubmenuContent = styled(Link)`
     background-color: white;
   }
 `;
-const SubmenuContentText = styled.span`
+const SubmenuContentText = styled.span<any>`
   margin-left: 20px;
   font-size: 16px;
   font-weight: 500;
@@ -325,7 +324,7 @@ export default function Home() {
               <div key={menuIndex}>
                 <MenuItems
                   onClick={() => toggleSubmenu(menu)}
-                  isOpen={openSubmenu?.title === menu?.title ? true : false}>
+                  $isOpen={openSubmenu?.title === menu?.title ? true : false}>
                   <Menu>
                     <Image
                       src="/assets/home.svg"
@@ -352,13 +351,13 @@ export default function Home() {
                     ""
                   )}
                 </MenuItems>
-                <MenuContent isOpen={openSubmenu?.title === menu?.title}>
+                <MenuContent $isOpen={openSubmenu?.title === menu?.title}>
                   {openSubmenu?.title === menu?.title &&
                     openSubmenu?.submenu?.map(
                       (submenu: any, submenuIndex: any) => (
                         <SubmenuContent
                           ref={ref}
-                          isChild={openSubmenu?.submenu?.length}
+                          $isChild={openSubmenu?.submenu?.length}
                           key={submenuIndex}
                           href={submenu?.href}
                           isActive={pathname === submenu?.href ? true : false}>
@@ -366,7 +365,7 @@ export default function Home() {
                             <MenuActiveIcon> </MenuActiveIcon>
                           )} */}
                           <SubmenuContentText
-                            isActive={
+                            $isActive={
                               pathname === submenu?.href ? true : false
                             }>
                             {submenu?.title}{" "}
@@ -380,7 +379,7 @@ export default function Home() {
               <MenuLink
                 href={menu?.href}
                 key={menuIndex}
-                isOpen={openSubmenu?.title === menu?.title ? true : false}>
+                $isOpen={openSubmenu?.title === menu?.title ? true : false}>
                 <Menu>
                   <Image src="/assets/home.svg" width={24} height={24} alt="" />
                   <MenuText> {menu?.title}</MenuText>

@@ -1,8 +1,10 @@
 import styled from "styled-components";
-export const Card = styled.div`
+export const Card = styled.div<any>`
   background-color: black;
   border-radius: 12px;
   padding: 16px 12px 0px 12px;
+  padding: ${(props: any) =>
+    props.$actionButtonPosition === "top" ? "16px 12px 0px 12px" : "20px 12px"};
   display: flex;
   flex-direction: column;
   position: relative;
@@ -14,7 +16,7 @@ export const CardHeaderWrapper = styled.div`
   align-items: center;
   gap: 12px;
   padding-bottom: 24px;
-  border-bottom: 1px #808080 solid;
+  // border-bottom: 1px #808080 solid;
 `;
 export const CardHeader = styled.div`
   display: flex;
@@ -109,9 +111,9 @@ export const CardBodyAreaWrapper = styled.div`
   justify-content: space-around;
 
   // gap: 12px;
-  padding: 6px 12px;
+  // padding: 0px 0px;
 `;
-export const CardBodyPartWrapper = styled.div`
+export const CardBodyPartWrapper = styled.div<any>`
   width: 50%;
 
   min-height: 70px;
@@ -122,12 +124,12 @@ export const CardBodyPartWrapper = styled.div`
   padding: 6px 12px;
   position: relative;
   border-bottom: ${(props: any) => {
-    if (props.isKey >= 3) {
-      if (props.isIndex == 0 || props.isIndex == 1) {
+    if (props.$isKey >= 3) {
+      if (props.$isIndex == 0 || props.$isIndex == 1) {
         return " 1px solid #4F4F4F";
       }
-    } else if (props.isKey == 3) {
-      if (props.isIndex == 0) {
+    } else if (props.$isKey == 3) {
+      if (props.$isIndex == 0) {
         return "none";
       }
     }
@@ -136,12 +138,12 @@ export const CardBodyPartWrapper = styled.div`
   &:before {
     content: "";
     background-color: ${(props: any) => {
-      if (props.isKey == 4 || props.isKey == 2) {
-        if (props.isIndex == 0 || props.isIndex == 2) {
+      if (props.$isKey == 4 || props.$isKey == 2) {
+        if (props.$isIndex == 0 || props.$isIndex == 2) {
           return "  #4F4F4F";
         }
-      } else if (props.isKey == 3) {
-        if (props.isIndex == 0) {
+      } else if (props.$isKey == 3) {
+        if (props.$isIndex == 0) {
           return "  #4F4F4F";
         }
       }
@@ -175,7 +177,8 @@ export const CardBodyDivider = styled.div`
 // action area component
 export const CardUpperActionButtonWrapper = styled.div`
   position: absolute;
-  right: 20px;
+  top: 16px;
+  right: 16px;
   background-color: #333333;
   width: 24px;
   height: 24px;
@@ -183,11 +186,12 @@ export const CardUpperActionButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   // background: url("/assets/eye.svg") no-repeat;
   padding: 3px;
 `;
 export const ToggleButton = styled.button``;
-export const ActionButtonArea = styled.div`
+export const ActionButtonArea = styled.div<any>`
   width: 130px;
   height: auto;
   position: absolute;
@@ -195,7 +199,7 @@ export const ActionButtonArea = styled.div`
   top: -16px;
   border-radius: 12px;
   background-color: #333333;
-  padding: 4px;
+  padding: ${(props: any) => (props.$isAction === "paddings" ? "4px" : "0px")};
   transition: all 0.5s ease-in-out;
   &:before {
     content: "";

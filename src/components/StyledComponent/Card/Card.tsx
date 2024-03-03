@@ -10,20 +10,26 @@ const CardComponent = ({
   handleShowActionBtn,
   showActionBtn,
 }: any) => {
+  console.log(typeof cardObject.subtitle, "cardObject");
   return (
-    <Card>
+    <Card
+      $actionButtonPosition={
+        cardObject?.options?.actionBtn === "top" ? "top" : ""
+      }>
       {/*   card header are  */}
       <CardHeaderArea project={project} cardObject={cardObject} />
       {/*   card body area  */}
       <CardBody project={project} cardObject={cardObject} />
       {/* action area code here  */}
-      <CardButtonArea
-        cardObject={cardObject}
-        project={project}
-        actionButtonPosition={actionButtonPosition}
-        handleShowActionBtn={handleShowActionBtn}
-        showActionBtn={showActionBtn}
-      />
+      {cardObject?.actions && (
+        <CardButtonArea
+          cardObject={cardObject}
+          project={project}
+          actionButtonPosition={actionButtonPosition}
+          handleShowActionBtn={handleShowActionBtn}
+          showActionBtn={showActionBtn}
+        />
+      )}
     </Card>
   );
 };

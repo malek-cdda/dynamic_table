@@ -17,10 +17,10 @@ export const ProgressBar = styled.div`
   transition: width 0.5s;
   overflow: hidden;
 `;
-export const ProgressBarInner = styled.div`
-  width: ${(props: any) => props?.progressData?.progress || "0"}%;
+export const ProgressBarInner = styled.div<any>`
+  width: ${(props: any) => props?.$progressData?.progress || "0"}%;
   background-color: ${(props: any) =>
-    props?.progressData?.progressColor || "green"};
+    props?.$progressData?.progressColor || "green"};
   height: 100%;
   border-radius: 16px;
   transition: "width 0.5s";

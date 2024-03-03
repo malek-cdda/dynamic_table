@@ -23,7 +23,7 @@ const Progressbar = ({ progress }: any) => {
   return (
     <ProgressArea>
       <ProgressBar>
-        <ProgressBarInner progressData={obj}></ProgressBarInner>
+        <ProgressBarInner $progressData={obj}></ProgressBarInner>
       </ProgressBar>
       <ProgressBarInnerText>{progress}%</ProgressBarInnerText>
     </ProgressArea>

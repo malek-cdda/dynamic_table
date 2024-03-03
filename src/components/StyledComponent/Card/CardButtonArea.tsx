@@ -10,12 +10,12 @@ const CardButtonArea = ({
   actionButtonPosition = "bottom",
   cardObject,
   project,
-  handleShowActionBtn,
+  handleShowActionBtn = () => {},
   showActionBtn,
 }: any) => {
   return (
     <>
-      {actionButtonPosition === "top" ? (
+      {cardObject?.options?.actionBtn === "top" ? (
         <CardUpperActionButtonWrapper>
           <ToggleButton onClick={() => handleShowActionBtn(project.id)}>
             <Image
@@ -25,13 +25,13 @@ const CardButtonArea = ({
               alt="more"
             />
           </ToggleButton>
-          {project.id === showActionBtn ? (
-            <ActionButtonArea>
-              {cardObject?.actions && cardObject?.actions(project)}
-            </ActionButtonArea>
-          ) : (
-            ""
-          )}
+          {project.id === showActionBtn
+            ? cardObject?.actions && (
+                <ActionButtonArea>
+                  {cardObject.actions(project)}
+                </ActionButtonArea>
+              )
+            : ""}
         </CardUpperActionButtonWrapper>
       ) : (
         <CardFooterWrapper>

@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+export const TableComponentWrapper = styled.div`
+  overflow-x: auto;
+`;
 // ?!TableHeader styled components code here
 
 export const Table = styled.table`
@@ -8,20 +11,25 @@ export const Table = styled.table`
   width: 100%;
   padding: 5px;
   background: ${(props: any) =>
-    props.theme?.themePresets?.table?.background || "#fff"};
-  color: ${(props: any) => props.theme?.themePresets?.table?.text || "black"};
+    props.theme?.themePresets?.table?.background || "black"};
+  color: ${(props: any) => props.theme?.themePresets?.table?.text || "#fff"};
 `;
 // thead code here
 export const TableHeader = styled.thead`
-  color: ${(props: any) => props.theme?.themePresets?.table?.text || "black"};
+  border-top: ${(props: any) =>
+      props.theme?.themePresets?.table?.celltext || "#eee"}
+    1px solid;
+  color: ${(props: any) => props.theme?.themePresets?.table?.text || "white"};
   background: ${(props: any) =>
-    props.theme?.themePresets?.table?.background || "#fff"};
+    props.theme?.themePresets?.table?.background || "black"};
 `;
 // table row code here
-export const TableRow = styled.tr`
+export const TableRow = styled.tr<any>`
   border-bottom: ${(props: any) =>
       props.theme?.themePresets?.table?.celltext || "#eee"}
     1px solid;
+  cursor: ${(props: any) =>
+    props.$isOnclickRow == "click" ? "pointer" : "default"};
 `;
 // table head code here
 export const TableHead = styled.th`

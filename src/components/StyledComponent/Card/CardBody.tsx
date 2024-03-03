@@ -44,8 +44,8 @@ const CardBody = ({ project, cardObject }: any) => {
           project[item?.title] && (
             <CardBodyPartWrapper
               key={index}
-              isKey={value.length}
-              isIndex={index}>
+              $isKey={value.length}
+              $isIndex={index}>
               <CardBodyTitle>
                 {project[item?.title] && item?.text}
               </CardBodyTitle>
@@ -65,30 +65,6 @@ const CardBody = ({ project, cardObject }: any) => {
           )
         );
       })}
-      {/* <CardBodyPartWrapper>
-        <CardBodyTitle>TimeLine</CardBodyTitle>
-        <CardTimeLineText> {project[cardObject?.timeline]}</CardTimeLineText>
-      </CardBodyPartWrapper>
-      <CardBodyPartWrapper>
-        <CardBodyTitle> Project Teams</CardBodyTitle>
-        <AvatarComponent projectImageData={project[cardObject?.projectteams]} />
-      </CardBodyPartWrapper>
-   
-      <CardBodyPartWrapper>
-        <CardBodyTitle>Project Type</CardBodyTitle>
-        <CardTimeLineText>
-          {" "}
-          {project[cardObject?.projecttypes]}
-        </CardTimeLineText>
-        
-      </CardBodyPartWrapper>
-      {project[cardObject?.progress] && (
-        <CardBodyPartWrapper>
-          <CardBodyTitle>Progress</CardBodyTitle>
-          <Progressbar progress={project[cardObject?.progress]} />
-       
-        </CardBodyPartWrapper>
-      )} */}
     </CardBodyAreaWrapper>
   );
 };
